@@ -1,9 +1,9 @@
 import sys, re
 
 def tokenise(line):
-	line = re.sub(r'([\(\)”?:!;])', r' \g<1> ', line)
+	line = re.sub(r'([\(\)"?:!;])', r' \g<1> ', line)
 	line = re.sub(r'([^0-9]),', r'\g<1> ,', line)
-	line = re.sub(r',([^0-9])', r',\g<1>', line)
+	line = re.sub(r' ,([^0-9])', r', \g<1>', line)
 	line = re.sub(r'  +', ' ', line)
 
 	output = []
@@ -19,7 +19,4 @@ def tokenise(line):
 line = sys.stdin.readline()
 while line != '':
 	print(tokenise(line.strip('\n')))
-	line = sys.stdin.readline()
-
-
-
+	line =  sys.stdin.readline()
